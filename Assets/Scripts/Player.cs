@@ -37,6 +37,26 @@ public class Player : MonoBehaviour {
             // the right wall flag to true
             atRightWall = true;
         }
+        else
+        {
+            // Collision with something that is not a wall
+            // Check if collided with a projectile
+            // A projectile has a Projectile script component,
+            // so try to get a reference to that component
+            Projectile projectile = other.GetComponent<Projectile>();
+
+            //If that reference is not null, then check if it's an enemyProjectile      
+            if (projectile != null && projectile.enemyProjectile)
+            {
+                // Collided with an enemy projectile
+
+                // Destroy the projectile game object
+                Destroy(other.gameObject);
+
+                // Destroy self
+                Destroy(gameObject);
+            }
+        }
     }
 
     // When no longer colliding with an object...

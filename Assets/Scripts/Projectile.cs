@@ -18,5 +18,11 @@ public class Projectile : MonoBehaviour
         // the movement is multiplied by the speed (so negative speed will
         // move the projectile down.)
         transform.Translate(Vector3.up * speed * Time.deltaTime);
+
+        // Check if the game object is visible, if not, destroy self
+        if(!Utility.isVisible(GetComponent<Renderer>(), Camera.main))
+        {
+            Destroy(gameObject);
+        }
     }
 }

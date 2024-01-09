@@ -32,5 +32,25 @@ public class Alien : MonoBehaviour
             // Set direction of the wave
             wave.SetDirectionLeft();
         }
+        else
+        {
+            // Collision with something that is not a wall
+            // Check if collided with a projectile
+            // A projectile has a Projectile script component,
+            // so try to get a reference to that component
+            Projectile projectile = other.GetComponent<Projectile>();
+
+            //If that reference is not null, then check if it's an enemyProjectile      
+            if (projectile != null && !projectile.enemyProjectile)
+            {
+                // Collided with non enemy projectile (so a player projectile)
+
+                // Destroy the projectile game object
+                Destroy(other.gameObject);
+
+                // Destroy self
+                Destroy(gameObject);
+            }
+        }
     }
 }
