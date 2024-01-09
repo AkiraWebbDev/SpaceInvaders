@@ -6,8 +6,8 @@ public class LevelMaster : MonoBehaviour
 {
 
     // Variables referencing two edge colliders
-    public EdgeCollider2D leftWall;
-    public EdgeCollider2D rightWall;
+    public EdgeCollider2D topWall;
+    public EdgeCollider2D bottomWall;
 
     // Use this for initialization
     void Start()
@@ -22,38 +22,33 @@ public class LevelMaster : MonoBehaviour
         float screenH = Camera.main.pixelHeight;
 
         // Create an array consisting of two Vector2 objects
-        Vector2[] edgePoints = new Vector2[2];
+        Vector2[] topEdgePoints = new Vector2[2];
+        Vector2[] bottomEdgePoints = new Vector2[2];
 
         // Convert screen coordinates point (0,0) to world coordinates
         Vector3 leftBottom = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 0f));
         // Convert screen coordinates point (0,H) to world coordinates
         Vector3 leftTop = Camera.main.ScreenToWorldPoint(new Vector3(0f, screenH, 0f));
-
-        // Set the two points in the array to screen left bottom
-        // and screen left top points            
-        edgePoints[0] = leftBottom;
-        edgePoints[1] = leftTop;
-
-        // Position the left wall edge collider
-        // at the left edge of the camera
-        leftWall.points = edgePoints;
-
-        // Allocate a new array consisting of two Vector2 objects
-        edgePoints = new Vector2[2];
-
         // Convert screen coordinates point (W,0) to world coordinates
         Vector3 rightBottom = Camera.main.ScreenToWorldPoint(new Vector3(screenW, 0f, 0f));
         // Convert screen coordinates point (W,H) to world coordinates
         Vector3 rightTop = Camera.main.ScreenToWorldPoint(new Vector3(screenW, screenH, 0f));
 
-        // Set the two points in the array to screen right bottom
-        // and screen right top points            
-        edgePoints[0] = rightBottom;
-        edgePoints[1] = rightTop;
+        // Set the top edge points
+        topEdgePoints[0] = leftTop;
+        topEdgePoints[1] = rightTop;
 
-        // Position the left wall edge collider
-        // at the left edge of the camera
-        rightWall.points = edgePoints;
+        // Set the bottome edge points
+        bottomEdgePoints[0] = leftBottom;
+        bottomEdgePoints[1] = rightBottom;
+
+        // Position the top wall edge collider
+        // at the top edge of the camera
+        topWall.points = topEdgePoints;
+
+        // Position the bottom wall edge collider
+        // at the bottom edge of the camera
+        bottomWall.points = bottomEdgePoints;
     }
 
     // HUD
