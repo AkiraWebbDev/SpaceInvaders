@@ -56,10 +56,10 @@ public class EnemyWave : MonoBehaviour
     {
         float gapBetweenAliens = 1.5f;
 
-        for (int y = 0; y < 4; y++)
+        for (int y = 0; y < 6; y++)
         {
             float offsetX = ((y % 2 == 0) ? 0.0f : 0.5f) * gapBetweenAliens;
-            for (int x = -3; x < 3; ++x)
+            for (int x = -2; x < 1; ++x)
             {
                 // Create new game object (from prefab)
                 Transform alien = Instantiate(alienPrefab);

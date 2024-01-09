@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
         // The projectile travels up (in the directon of positive y axis), but
         // the movement is multiplied by the speed (so negative speed will
         // move the projectile down.)
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         // Check if the game object is visible, if not, destroy self
         if(!Utility.isVisible(GetComponent<Renderer>(), Camera.main))
