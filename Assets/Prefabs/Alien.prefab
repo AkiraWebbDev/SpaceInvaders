@@ -177,4 +177,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 2317268234527556530, guid: 742b74048fd3c4baf8522fb0e6995e7c, type: 3}
   autoShootProbability: 0.001
-  fireCooldownTime: 1
+  fireCooldownTime: 1.5
