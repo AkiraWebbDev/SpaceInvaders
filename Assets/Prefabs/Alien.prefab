@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2461965174225432438}
   - component: {fileID: 8385844665931227450}
   - component: {fileID: 662514119169272741}
+  - component: {fileID: -3794082501861331784}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -161,3 +162,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072dbd80f0bd84e9885a10aed2411102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3794082501861331784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402000952582990503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ad9a291fec74c4892fc05630d82baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 2317268234527556530, guid: 742b74048fd3c4baf8522fb0e6995e7c, type: 3}
+  autoShootProbability: 0.001
+  fireCooldownTime: 1
