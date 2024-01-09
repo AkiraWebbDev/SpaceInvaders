@@ -5,6 +5,9 @@ using UnityEngine;
 public class Alien : MonoBehaviour
 {
 
+    // Points the alien is worth
+    public int points = 100;
+
     // When enemy collides with an object with a
     // collider that is a trigger...
     void OnTriggerEnter2D(Collider2D other)
@@ -47,6 +50,9 @@ public class Alien : MonoBehaviour
 
                 // Destroy the projectile game object
                 Destroy(other.gameObject);
+
+                // Report enemy hit to the game master
+                GameMaster.EnemyHit(this);
 
                 // Destroy self
                 Destroy(gameObject);

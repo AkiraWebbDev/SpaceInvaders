@@ -53,6 +53,9 @@ public class Player : MonoBehaviour {
                 // Destroy the projectile game object
                 Destroy(other.gameObject);
 
+                // Report the player hit to the game master
+                GameMaster.PlayerHit();
+
                 // Destroy self
                 Destroy(gameObject);
             }
@@ -77,6 +80,19 @@ public class Player : MonoBehaviour {
             atRightWall = false;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            // Report enemy hit to the game master
+            GameMaster.PlayerHit();
+
+            // Destroy the player game object
+            Destroy(gameObject);
+        }
+    }
+
 
     // Update is called once per frame
     void Update () {
