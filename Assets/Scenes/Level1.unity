@@ -153,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 369765967}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: -2}
+  m_LocalPosition: {x: -6.23, y: -4.39, z: -2}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -465,8 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba8c40c5c7944b7a837709381c3f818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftWall: {fileID: 1523800179}
-  rightWall: {fileID: 1083464160}
+  topWall: {fileID: 1523800179}
+  bottomWall: {fileID: 1083464160}
 --- !u!4 &799716909
 Transform:
   m_ObjectHideFlags: 0
@@ -624,8 +624,8 @@ GameObject:
   - component: {fileID: 1083464159}
   - component: {fileID: 1083464160}
   m_Layer: 0
-  m_Name: RightWall
-  m_TagString: RightWall
+  m_Name: BottomWall
+  m_TagString: BottomWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -697,8 +697,8 @@ GameObject:
   - component: {fileID: 1523800178}
   - component: {fileID: 1523800179}
   m_Layer: 0
-  m_Name: LeftWall
-  m_TagString: LeftWall
+  m_Name: TopWall
+  m_TagString: TopWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

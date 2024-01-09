@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LeftWall
-  - RightWall
   - Enemy
+  - TopWall
+  - BottomWall
   layers:
   - Default
   - TransparentFX

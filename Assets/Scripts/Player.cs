@@ -2,6 +2,8 @@
 	Created by: Lech Szymanski
 				lech.szymanski@otago.ac.nz
 				COSC360: Computer Game Design
+    Updated by: Luke Webb
+                weblu938@student.otago.ac.nz
 */
 
 using UnityEngine;
@@ -14,28 +16,28 @@ public class Player : MonoBehaviour {
 
     // Flag indicating whether the player is at the 
     // left edge of the screen
-    bool atLeftWall = false;
+    bool atTopWall = false;
 
     // Flag indicating whether the player is at the 
     // right edge of the screen
-    bool atRightWall = false;
+    bool atBottomWall = false;
 
     // On collision with a trigger collider...
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check the tag of the object the player
         // has collided with
-        if (other.tag == "LeftWall")
+        if (other.tag == "TopWall")
         {
-            // If collided with the left wall, set
-            // the left wall flag to true
-            atLeftWall = true;
+            // If collided with the top wall, set
+            // the top wall flag to true
+            atTopWall = true;
         }
-        else if (other.tag == "RightWall")
+        else if (other.tag == "BottomWall")
         {
-            // If collided with the right wall, set
-            // the right wall flag to true
-            atRightWall = true;
+            // If collided with the bottom wall, set
+            // the bottom wall flag to true
+            atBottomWall = true;
         }
         else
         {
@@ -67,17 +69,17 @@ public class Player : MonoBehaviour {
     {
         // Check the tag of the object the player
         // has ceased to collide with
-        if (other.tag == "LeftWall")
+        if (other.tag == "TopWall")
         {
             // If collided with the left wall, set
             // the left wall flag to true
-            atLeftWall = false;
+            atTopWall = false;
         }
-        else if (other.tag == "RightWall")
+        else if (other.tag == "BottomWall")
         {
             // If collided with the right wall, set
             // the right wall flag to true
-            atRightWall = false;
+            atBottomWall = false;
         }
     }
 
@@ -98,21 +100,21 @@ public class Player : MonoBehaviour {
     void Update () {
 		// Player movement from input (it's a variable between -1 and 1) for
 		// degree of left or right movement
-		float movementInput = Input.GetAxis("Horizontal");
+		float movementInput = Input.GetAxis("Vertical");
 
         // If close to wall and moving towards it,
         // stop the movement
-        if (atLeftWall && (movementInput < 0))
+        if (atTopWall && (movementInput > 0))
         {
             movementInput = 0;
         }
-        if (atRightWall && (movementInput > 0))
+        if (atBottomWall && (movementInput < 0))
         {
             movementInput = 0;
         }
 
         // Move the player object
-        transform.Translate( new Vector3(Time.deltaTime * speed * movementInput,0,0), Space.World);
+        transform.Translate( new Vector3(0, Time.deltaTime * speed * movementInput, 0), Space.World);
 
         if(Input.GetButton("Jump"))
         {

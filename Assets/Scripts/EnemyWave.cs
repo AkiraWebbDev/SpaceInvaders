@@ -16,12 +16,50 @@ public class EnemyWave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BlockFormation();
+    }
+
+    void Update()
+    {
+        transform.Translate(new Vector3(0, Time.deltaTime * direction * speed, 0));
+    }
+
+    // Method for changing wave direction (to be invoked
+    // from a collider)
+    public void SetDirectionUp()
+    {
+        // Check if the current direction is to the right
+        if (direction == -1)
+        {
+            // Changing the direction
+            // push the wave down a bit as well
+            direction = 1;
+            transform.Translate(new Vector3(-0.4f, 0, 0));
+        }
+    }
+
+    // Method for changing wave direction (to be invoked
+    // from a collider)
+    public void SetDirectionDown()
+    {
+        // Check if the current direction is to the left
+        if (direction == 1)
+        {
+            // Changing the direction
+            // push the wave down a bit as well
+            direction = -1;
+            transform.Translate(new Vector3(-0.4f, 0, 0));
+        }
+    }
+
+    public void BlockFormation()
+    {
         float gapBetweenAliens = 1.5f;
 
-        for(int y = 0; y < 4; y++)
+        for (int y = 0; y < 4; y++)
         {
             float offsetX = ((y % 2 == 0) ? 0.0f : 0.5f) * gapBetweenAliens;
-            for(int x = -3; x < 3; ++x)
+            for (int x = -3; x < 3; ++x)
             {
                 // Create new game object (from prefab)
                 Transform alien = Instantiate(alienPrefab);
@@ -32,36 +70,4 @@ public class EnemyWave : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        transform.Translate(new Vector3(Time.deltaTime * direction * speed, 0, 0));
-    }
-
-    // Method for changing wave direction (to be invoked
-    // from a collider)
-    public void SetDirectionLeft()
-    {
-        // Check if the current direction is to the right
-        if (direction == 1)
-        {
-            // Changing the direction
-            // push the wave down a bit as well
-            direction = -1;
-            transform.Translate(new Vector3(0, -0.5f, 0));
-        }
-    }
-
-    // Method for changing wave direction (to be invoked
-    // from a collider)
-    public void SetDirectionRight()
-    {
-        // Check if the current direction is to the left
-        if (direction == -1)
-        {
-            // Changing the direction
-            // push the wave down a bit as well
-            direction = 1;
-            transform.Translate(new Vector3(0, -0.5f, 0));
-        }
-    }
 }
