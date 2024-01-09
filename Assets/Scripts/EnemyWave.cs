@@ -36,4 +36,32 @@ public class EnemyWave : MonoBehaviour
     {
         transform.Translate(new Vector3(Time.deltaTime * direction * speed, 0, 0));
     }
+
+    // Method for changing wave direction (to be invoked
+    // from a collider)
+    public void SetDirectionLeft()
+    {
+        // Check if the current direction is to the right
+        if (direction == 1)
+        {
+            // Changing the direction
+            // push the wave down a bit as well
+            direction = -1;
+            transform.Translate(new Vector3(0, -0.5f, 0));
+        }
+    }
+
+    // Method for changing wave direction (to be invoked
+    // from a collider)
+    public void SetDirectionRight()
+    {
+        // Check if the current direction is to the left
+        if (direction == -1)
+        {
+            // Changing the direction
+            // push the wave down a bit as well
+            direction = 1;
+            transform.Translate(new Vector3(0, -0.5f, 0));
+        }
+    }
 }
