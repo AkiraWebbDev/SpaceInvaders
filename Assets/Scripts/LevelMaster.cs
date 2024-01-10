@@ -30,9 +30,9 @@ public class LevelMaster : MonoBehaviour
         // Convert screen coordinates point (0,H) to world coordinates
         Vector3 leftTop = Camera.main.ScreenToWorldPoint(new Vector3(0f, screenH, 0f));
         // Convert screen coordinates point (W,0) to world coordinates
-        Vector3 rightBottom = Camera.main.ScreenToWorldPoint(new Vector3(screenW, 0f, 0f));
+        Vector3 rightBottom = Camera.main.ScreenToWorldPoint(new Vector3(screenW + 1500, 0f, 0f));
         // Convert screen coordinates point (W,H) to world coordinates
-        Vector3 rightTop = Camera.main.ScreenToWorldPoint(new Vector3(screenW, screenH, 0f));
+        Vector3 rightTop = Camera.main.ScreenToWorldPoint(new Vector3(screenW + 1500 , screenH, 0f));
 
         // Set the top edge points
         topEdgePoints[0] = leftTop;
