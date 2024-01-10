@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2489606470283424085}
   - component: {fileID: 2437517590993782260}
   - component: {fileID: 5216154954486503515}
-  - component: {fileID: 4551998238505506776}
+  - component: {fileID: 5845713435637244970}
   m_Layer: 0
   m_Name: PlayerShot
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0574361, y: -0.18322048, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f2baf54bd9cf2448e95ab363679616e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 313fff99fffef4567a2695ca2f142f69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   enemyProjectile: 0
---- !u!58 &4551998238505506776
-CircleCollider2D:
+--- !u!70 &5845713435637244970
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,6 +132,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.12
+  m_Offset: {x: 0.009371014, y: 0.0060241213}
+  m_Size: {x: 0.1385809, y: 0.08336833}
+  m_Direction: 1
