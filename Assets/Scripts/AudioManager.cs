@@ -5,6 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip explosionSound;
+    public AudioClip playerRecharge;
+    public AudioClip playerLevelUp;
 
     public AudioSource audioSource;
 
@@ -22,5 +24,16 @@ public class AudioManager : MonoBehaviour
     public void PlayExplosion()
     {
         audioSource.PlayOneShot(explosionSound);
+    }
+
+    public void PlayPlayerRecharge()
+    {
+        audioSource.PlayOneShot(playerRecharge);
+
+    }
+
+    public void PlayLevelUp()
+    {
+        audioSource.PlayOneShot(playerLevelUp);
     }
 }

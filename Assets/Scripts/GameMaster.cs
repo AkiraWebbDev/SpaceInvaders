@@ -13,31 +13,26 @@ public class GameMaster : MonoBehaviour
     // Player score
     public static int playerScore = 0;
 
+    public static int enemiesDestroyed = 0;
+
+    public static int distanceTravelled = 0;
+
+
+    public static int playerSpeed = 5;
+    public static float rateOfFire = 1;
+
     // Method to call when enemy is hit
     public static void EnemyHit(Alien alien)
     {
         // Add enemy points to player's score
         playerScore += alien.points;
-
-        // Get the reference to alien's parent, the wave object
-        // Transform enemyWave = alien.transform.parent;
-
-        // Get an array of references to all children of the wave game object
-        // who have an Alien component (so, we're looking for all the
-        // aliens remaining in the wave)
-        // Component[] aliensLeft = enemyWave.GetComponentsInChildren<Alien>();
-
-        //// If only one alien is left, that's the alien that just has been
-        //// hit and is about to be deleted...so no more aliens will be left
-        //if (aliensLeft.Length == 1)
-        //{
-        //    SceneManager.LoadScene("GameOver");
-        //}
+        enemiesDestroyed += 1;
     }
 
     public static void DartHit(Dart dart)
     {
         playerScore += dart.points;
+        enemiesDestroyed += 1;
 
     }
 
@@ -47,7 +42,8 @@ public class GameMaster : MonoBehaviour
         playerHealth--;
 
         if (playerHealth <= 0)
-        {   
+        {
+            distanceTravelled = (int)((Time.realtimeSinceStartup * 75) / 1000);
             SceneManager.LoadScene("GameOver");
         }
     }

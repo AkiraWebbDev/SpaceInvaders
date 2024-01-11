@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 
     // Private variables (not visible in the Inspector panel)
     // The speed of player movement
-    float speed = 10;
+    float speed = GameMaster.playerSpeed;
 
     // Flag indicating whether the player is at the 
     // left edge of the screen
@@ -117,12 +117,21 @@ public class Player : MonoBehaviour {
         }
     }
 
+    AudioManager audioManager;
+
     void Start()
     {
         spriteAnim = GameObject.Find("PlayerSprite").GetComponent<Animator>();
         if (spriteAnim == null)
         {
             print("Error, no animator found");
+        }
+
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            print("Error, no audio manager found");
+
         }
     }
 
@@ -178,6 +187,7 @@ public class Player : MonoBehaviour {
             // Report the player hit to the game master
             GameMaster.PlayerHit();
             spriteAnim.SetTrigger("Hit");
+            audioManager.PlayPlayerRecharge();
             StartCoroutine("PlayerInvulnTimer");
         }
         else
