@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8385844665931227450}
   - component: {fileID: 662514119169272741}
   - component: {fileID: -3794082501861331784}
+  - component: {fileID: 3961467611112042279}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Enemy
@@ -211,6 +212,27 @@ MonoBehaviour:
   autoShootProbability: 0.001
   fireCooldownTime: 1.5
   shotSound: {fileID: 0}
+--- !u!95 &3961467611112042279
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402000952582990503}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ffb71e592130b4d38bd92efd26466551, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8937304668738168234
 GameObject:
   m_ObjectHideFlags: 0
