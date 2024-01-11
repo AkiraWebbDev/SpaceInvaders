@@ -41,8 +41,14 @@ public class GameMaster : MonoBehaviour
         playerHealth--;
 
         if (playerHealth <= 0)
-        {
+        {   
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    IEnumerator GameOverLoad()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("GameOver");
     }
 }

@@ -65,6 +65,7 @@ public class Player : MonoBehaviour {
                 //If that reference is not null, then check if it's an enemyProjectile      
                 if (projectile != null && projectile.enemyProjectile)
                 {
+                    Destroy(other.gameObject);
                     // Collided with an enemy projectile
                     Damage();
                 }
@@ -106,6 +107,7 @@ public class Player : MonoBehaviour {
     {
         if(other.gameObject.tag == "Enemy")
         {
+            Destroy(other.gameObject);
             Damage();
         }
     }

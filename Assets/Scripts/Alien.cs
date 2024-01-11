@@ -55,13 +55,17 @@ public class Alien : MonoBehaviour
                 // Report enemy hit to the game master
                 GameMaster.EnemyHit(this);
 
-                Transform explosion = Instantiate(explosionPrefab);
-                explosion.parent = transform.parent.parent;
-                explosion.position = transform.position;
-
                 // Destroy self
                 Destroy(gameObject);
             }
         }
+
+    }
+
+    public void OnDestroy()
+    {
+        Transform explosion = Instantiate(explosionPrefab);
+        explosion.parent = transform.parent.parent;
+        explosion.position = transform.position;
     }
 }
