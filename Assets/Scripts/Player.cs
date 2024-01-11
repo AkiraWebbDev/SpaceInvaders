@@ -124,21 +124,36 @@ public class Player : MonoBehaviour {
     void Update () {
 		// Player movement from input (it's a variable between -1 and 1) for
 		// degree of left or right movement
-		float movementInput = Input.GetAxis("Vertical");
+		float vertMovementInput = Input.GetAxis("Vertical");
+        float horiMovementInput = Input.GetAxis("Horizontal");
+
 
         // If close to wall and moving towards it,
         // stop the movement
-        if (atTopWall && (movementInput > 0))
+        if (atTopWall && (vertMovementInput > 0))
         {
-            movementInput = 0;
+            vertMovementInput = 0;
         }
-        if (atBottomWall && (movementInput < 0))
+        if (atBottomWall && (vertMovementInput < 0))
         {
-            movementInput = 0;
+            vertMovementInput = 0;
+        }
+        if (atLeftWall && (horiMovementInput < 0))
+        {
+            horiMovementInput = 0;
+        }
+        if (atRightWall && (horiMovementInput > 0))
+        {
+            horiMovementInput = 0;
         }
 
         // Move the player object
-        transform.Translate( new Vector3(0, Time.deltaTime * speed * movementInput, 0), Space.World);
+        transform.Translate(
+            new Vector3(
+                        Time.deltaTime * speed * horiMovementInput,
+                        Time.deltaTime * speed * vertMovementInput,
+                        0), Space.World);
+
 
         if(Input.GetButton("Jump"))
         {
