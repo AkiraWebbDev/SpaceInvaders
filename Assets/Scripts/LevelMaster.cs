@@ -8,6 +8,9 @@ public class LevelMaster : MonoBehaviour
     // Variables referencing two edge colliders
     public EdgeCollider2D topWall;
     public EdgeCollider2D bottomWall;
+    public EdgeCollider2D leftWall;
+    public EdgeCollider2D rightWall;
+
 
     // Use this for initialization
     void Start()
@@ -24,6 +27,9 @@ public class LevelMaster : MonoBehaviour
         // Create an array consisting of two Vector2 objects
         Vector2[] topEdgePoints = new Vector2[2];
         Vector2[] bottomEdgePoints = new Vector2[2];
+        Vector2[] leftWallPoints = new Vector2[2];
+        Vector2[] rightWallPoints = new Vector2[2];
+
 
         // Convert screen coordinates point (0,0) to world coordinates
         Vector3 leftBottom = Camera.main.ScreenToWorldPoint(new Vector3(0f, 0f, 0f));
@@ -33,6 +39,16 @@ public class LevelMaster : MonoBehaviour
         Vector3 rightBottom = Camera.main.ScreenToWorldPoint(new Vector3(screenW + 1500, 0f, 0f));
         // Convert screen coordinates point (W,H) to world coordinates
         Vector3 rightTop = Camera.main.ScreenToWorldPoint(new Vector3(screenW + 1500 , screenH, 0f));
+
+        Vector3 midTop = Camera.main.ScreenToWorldPoint(new Vector3(screenW/2, screenH, 0f));
+        Vector3 midBottom = Camera.main.ScreenToWorldPoint(new Vector3(screenW/2, 0f, 0f));
+
+
+        leftWallPoints[0] = leftTop;
+        leftWallPoints[1] = leftBottom;
+
+        rightWallPoints[0] = midTop;
+        rightWallPoints[1] = midBottom;
 
         // Set the top edge points
         topEdgePoints[0] = leftTop;
@@ -49,6 +65,9 @@ public class LevelMaster : MonoBehaviour
         // Position the bottom wall edge collider
         // at the bottom edge of the camera
         bottomWall.points = bottomEdgePoints;
+
+        leftWall.points = leftWallPoints;
+        rightWall.points = rightWallPoints;
     }
 
     // HUD

@@ -23,6 +23,9 @@ public class Player : MonoBehaviour {
     // right edge of the screen
     bool atBottomWall = false;
 
+    bool atLeftWall = false;
+    bool atRightWall = false;
+
     Animator spriteAnim;
 
     bool playerInvulnerable = false;
@@ -30,53 +33,72 @@ public class Player : MonoBehaviour {
     // On collision with a trigger collider...
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Check the tag of the object the player
-        // has collided with
-        if (other.tag == "TopWall")
+        switch (other.tag)
         {
-            // If collided with the top wall, set
-            // the top wall flag to true
-            atTopWall = true;
-        }
-        else if (other.tag == "BottomWall")
-        {
-            // If collided with the bottom wall, set
-            // the bottom wall flag to true
-            atBottomWall = true;
-        }
-        else
-        {
-            // Collision with something that is not a wall
-            // Check if collided with a projectile
-            // A projectile has a Projectile script component,
-            // so try to get a reference to that component
-            Projectile projectile = other.GetComponent<Projectile>();
+            case "TopWall":
+                // If collided with the top wall, set
+                // the top wall flag to true
+                atTopWall = true;
+                break;
 
-            //If that reference is not null, then check if it's an enemyProjectile      
-            if (projectile != null && projectile.enemyProjectile)
-            {
-                // Collided with an enemy projectile
-                Damage();
-            }
+            case "BottomWall":
+                // If collided with the bottom wall, set
+                // the bottom wall flag to true
+                atBottomWall = true;
+                break;
+
+            case "LeftWall":
+                atLeftWall = true;
+                break;
+
+            case "RightWall":
+                atRightWall = true;
+                break;
+
+            default:
+                // Collision with something that is not a wall
+                // Check if collided with a projectile
+                // A projectile has a Projectile script component,
+                // so try to get a reference to that component
+                Projectile projectile = other.GetComponent<Projectile>();
+
+                //If that reference is not null, then check if it's an enemyProjectile      
+                if (projectile != null && projectile.enemyProjectile)
+                {
+                    // Collided with an enemy projectile
+                    Damage();
+                }
+                break;
         }
     }
 
     // When no longer colliding with an object...
     void OnTriggerExit2D(Collider2D other)
     {
-        // Check the tag of the object the player
-        // has ceased to collide with
-        if (other.tag == "TopWall")
+        switch (other.tag)
         {
-            // If collided with the left wall, set
-            // the left wall flag to true
-            atTopWall = false;
-        }
-        else if (other.tag == "BottomWall")
-        {
-            // If collided with the right wall, set
-            // the right wall flag to true
-            atBottomWall = false;
+            case "TopWall":
+                // If collided with the top wall, set
+                // the top wall flag to true
+                atTopWall = false;
+                break;
+
+            case "BottomWall":
+                // If collided with the bottom wall, set
+                // the bottom wall flag to true
+                atBottomWall = false;
+                break;
+
+            case "LeftWall":
+                atLeftWall = false;
+                break;
+
+            case "RightWall":
+                atRightWall = false;
+                break;
+
+            default:
+                break;
         }
     }
 
