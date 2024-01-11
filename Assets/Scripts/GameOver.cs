@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey)
+        if (Input.GetKeyDown("return") || Input.GetKeyDown("enter"))
         {
             // Go back to the main menu
             SceneManager.LoadScene("MainMenu");
@@ -47,6 +47,6 @@ public class GameOver : MonoBehaviour
         GUI.Label(new Rect(0, Screen.height / 4f + 80f, Screen.width, 70), message);
 
         GUI.color = Color.white;
-        GUI.Label(new Rect(0, Screen.height / 4f + 240f, Screen.width, 70), "Press any key to continue...");
+        GUI.Label(new Rect(0, Screen.height / 4f + 240f, Screen.width, 70), "Press 'return' to continue...");
     }
 }
