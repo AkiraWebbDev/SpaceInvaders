@@ -7,6 +7,7 @@
 */
 
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour {
 
@@ -21,6 +22,10 @@ public class Player : MonoBehaviour {
     // Flag indicating whether the player is at the 
     // right edge of the screen
     bool atBottomWall = false;
+
+    Animator spriteAnim;
+
+    bool playerInvulnerable = false;
 
     // On collision with a trigger collider...
     void OnTriggerEnter2D(Collider2D other)
@@ -51,15 +56,7 @@ public class Player : MonoBehaviour {
             if (projectile != null && projectile.enemyProjectile)
             {
                 // Collided with an enemy projectile
-
-                // Destroy the projectile game object
-                Destroy(other.gameObject);
-
-                // Report the player hit to the game master
-                GameMaster.PlayerHit();
-
-                // Destroy self
-                Destroy(gameObject);
+                Damage();
             }
         }
     }
@@ -87,11 +84,16 @@ public class Player : MonoBehaviour {
     {
         if(other.gameObject.tag == "Enemy")
         {
-            // Report enemy hit to the game master
-            GameMaster.PlayerHit();
+            Damage();
+        }
+    }
 
-            // Destroy the player game object
-            Destroy(gameObject);
+    void Start()
+    {
+        spriteAnim = GameObject.Find("PlayerSprite").GetComponent<Animator>();
+        if (spriteAnim == null)
+        {
+            print("Error, no animator found");
         }
     }
 
@@ -124,4 +126,26 @@ public class Player : MonoBehaviour {
             attack.Shoot();
         }
 	}
+
+    public void Damage()
+    {
+        if (!playerInvulnerable)
+        {
+            // Report the player hit to the game master
+            GameMaster.PlayerHit();
+            spriteAnim.SetTrigger("Hit");
+            StartCoroutine("PlayerInvulnTimer");
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    IEnumerator PlayerInvulnTimer()
+    {
+        playerInvulnerable = true;
+        yield return (new WaitForSeconds(1));
+        playerInvulnerable = false;
+    }
 }

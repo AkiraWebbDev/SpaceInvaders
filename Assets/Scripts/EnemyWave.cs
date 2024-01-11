@@ -16,15 +16,43 @@ public class EnemyWave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //BlockFormation();
-        //TriangleFormation();
-        //CircleFormation();
-        ZigZagFormation();
+        SpawnRandomFormation();
     }
 
     void Update()
     {
         transform.Translate(new Vector3(0, Time.deltaTime * direction * speed, 0));
+    }
+
+
+    /* Spawns a random one of the following formations of aliens.
+        BlockFormation();
+        TriangleFormation();
+        CircleFormation();
+        ZigZagFormation();
+    */
+    private void SpawnRandomFormation()
+    {
+        int randNum = Random.Range(0, 4);
+
+        switch (randNum)
+        {
+            case 0:
+                BlockFormation();
+                break;
+            case 1:
+                TriangleFormation();
+                break;
+            case 2:
+                CircleFormation();
+                break;
+            case 3:
+                ZigZagFormation();
+                break;
+            default:
+                BlockFormation();
+                break;
+        }
     }
 
     // Method for changing wave direction (to be invoked

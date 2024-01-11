@@ -39,14 +39,8 @@ public class GameMaster : MonoBehaviour
     public static void PlayerHit()
     {
         playerHealth--;
-        // Reduce player's lives
-        if (playerHealth > 0)
-        {
-            // If more lives left, then reload the
-            // level 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-        else
+
+        if (playerHealth <= 0)
         {
             SceneManager.LoadScene("GameOver");
         }
