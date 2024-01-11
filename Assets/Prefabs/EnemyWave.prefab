@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alienPrefab: {fileID: 8203900730969795393, guid: 50a868bfacf5e462d9201bf624fe0b22, type: 3}
-  speed: 5
+  speed: 2
   direction: -1

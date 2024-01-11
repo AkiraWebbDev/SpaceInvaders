@@ -56,16 +56,17 @@ public class Alien : MonoBehaviour
                 GameMaster.EnemyHit(this);
 
                 // Destroy self
-                Destroy(gameObject);
+                PlayerDestroy();
             }
         }
 
     }
 
-    public void OnDestroy()
+    public void PlayerDestroy()
     {
         Transform explosion = Instantiate(explosionPrefab);
         explosion.parent = transform.parent.parent;
         explosion.position = transform.position;
+        Destroy(gameObject);
     }
 }

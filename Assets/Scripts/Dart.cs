@@ -9,7 +9,7 @@ public class Dart : MonoBehaviour
     // Points the alien is worth
     public int points = 30;
 
-    public int hitPoints = 3;
+    public int hitPoints = 2;
 
     public int speed = 2;
 
@@ -73,7 +73,7 @@ public class Dart : MonoBehaviour
 
     IEnumerator DespawnTimer()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(4.0f);
         Destroy(gameObject);
     }
 
@@ -95,27 +95,28 @@ public class Dart : MonoBehaviour
             // Destroy the projectile game object
             Destroy(other.gameObject);
 
-            // Report enemy hit to the game master
-            GameMaster.DartHit(this);
-
             hitPoints--;
 
-            if (hitPoints <= 0)
+            if (hitPoints < 1)
             {
                 // Destroy self
-                Destroy(gameObject);
+                PlayerDestroy();
             }
 
         }
-        
 
     }
 
-    public void OnDestroy()
+
+    public void PlayerDestroy()
     {
+        // Report enemy hit to the game master
+        GameMaster.DartHit(this);
+
         Transform explosion = Instantiate(explosionPrefab);
-        explosion.parent = transform.parent.parent;
+        explosion.parent = transform.parent;
         explosion.position = transform.position;
+        Destroy(gameObject);
     }
 
 }

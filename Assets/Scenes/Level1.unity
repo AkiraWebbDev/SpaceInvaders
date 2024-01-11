@@ -493,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd03c23b28b6b436ab486e1b1dc0b2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1591997950981169743, guid: 76a569e58677d46eab2ce5fb37627a88, type: 3}
 --- !u!61 &369765971
 BoxCollider2D:
   m_ObjectHideFlags: 0

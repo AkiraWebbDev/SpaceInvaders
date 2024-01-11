@@ -11,9 +11,11 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	// Private variables (not visible in the Inspector panel)
-	// The speed of player movement
-	float speed = 10;
+    public Transform explosionPrefab;
+
+    // Private variables (not visible in the Inspector panel)
+    // The speed of player movement
+    float speed = 10;
 
     // Flag indicating whether the player is at the 
     // left edge of the screen
@@ -106,7 +108,10 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Enemy")
-        {
+        {   
+            Transform explosion = Instantiate(explosionPrefab);
+            explosion.parent = transform.parent.parent;
+            explosion.position = other.transform.position;
             Destroy(other.gameObject);
             Damage();
         }
