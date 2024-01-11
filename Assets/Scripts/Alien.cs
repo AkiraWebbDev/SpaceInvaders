@@ -7,7 +7,7 @@ public class Alien : MonoBehaviour
     public Transform explosionPrefab;
 
     // Points the alien is worth
-    public int points = 100;
+    public int points = 10;
 
     // When enemy collides with an object with a
     // collider that is a trigger...

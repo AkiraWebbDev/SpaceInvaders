@@ -20,19 +20,25 @@ public class GameMaster : MonoBehaviour
         playerScore += alien.points;
 
         // Get the reference to alien's parent, the wave object
-        Transform enemyWave = alien.transform.parent;
+        // Transform enemyWave = alien.transform.parent;
 
         // Get an array of references to all children of the wave game object
         // who have an Alien component (so, we're looking for all the
         // aliens remaining in the wave)
-        Component[] aliensLeft = enemyWave.GetComponentsInChildren<Alien>();
+        // Component[] aliensLeft = enemyWave.GetComponentsInChildren<Alien>();
 
-        // If only one alien is left, that's the alien that just has been
-        // hit and is about to be deleted...so no more aliens will be left
-        if (aliensLeft.Length == 1)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        //// If only one alien is left, that's the alien that just has been
+        //// hit and is about to be deleted...so no more aliens will be left
+        //if (aliensLeft.Length == 1)
+        //{
+        //    SceneManager.LoadScene("GameOver");
+        //}
+    }
+
+    public static void DartHit(Dart dart)
+    {
+        playerScore += dart.points;
+
     }
 
     // Method to call when player is hit

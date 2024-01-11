@@ -8,11 +8,16 @@ public class SpawnController : MonoBehaviour
     public GameObject alienDartPrefab;
     public GameObject alienWavePrefab;
 
-    public int budget = 5;
+    public int budget = 2;
 
     private bool stopSpawning = false;
 
     public bool waveActive = false;
+
+    private void Start()
+    {
+        StartSpawning();
+    }
 
     public void StartSpawning()
     {
@@ -29,14 +34,14 @@ public class SpawnController : MonoBehaviour
             if (budget > 0)
             {
                 GameObject newEnemy = Instantiate(alienDartPrefab, new Vector3(8f, Random.Range(-4.5f, 4.5f), -2f), Quaternion.identity);
-                newEnemy.transform.parent = transform.parent;
                 budget--;
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(1f);
             }
             else
             {
                 yield return new WaitForSeconds(5.0f);
-                budget = (int)(Time.realtimeSinceStartup/2);
+                budget = (int)(Time.realtimeSinceStartup/5);
+          
             }
 
         }
