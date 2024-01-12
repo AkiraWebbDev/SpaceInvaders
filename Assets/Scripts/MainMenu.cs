@@ -37,8 +37,8 @@ public class MainMenu : MonoBehaviour
 
         GUI.color = Color.white;
         GUI.skin.label.fontSize = 20;
-        GUI.Label(new Rect(0, 20, Screen.width, Screen.height), "WASD or Arrow keys to move, Space to shoot.");
-        GUI.Label(new Rect(0, 50, Screen.width, Screen.height), "Survive for as long as possible!");
+        GUI.Label(new Rect(0, 20, Screen.width, Screen.height), "W-A-S-D or Arrow keys to move, Space to shoot.");
+        GUI.Label(new Rect(0, 50, Screen.width, Screen.height), "Kill Alien Drones to get random upgrades.\nSurvive for as long as possible!");
 
         GUI.color = Color.cyan;
         GUI.color = Color.white;

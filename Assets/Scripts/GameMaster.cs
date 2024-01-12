@@ -45,6 +45,13 @@ public class GameMaster : MonoBehaviour
 
     }
 
+    public static void WaveFinished()
+    {
+        playerScore += 500;
+        currentXP += 500;
+        CheckXp();
+    }
+
     public static void CheckXp()
     {
 

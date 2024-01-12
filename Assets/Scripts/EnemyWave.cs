@@ -22,6 +22,11 @@ public class EnemyWave : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(0, Time.deltaTime * direction * speed, 0));
+
+        if (transform.childCount == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
 
@@ -33,7 +38,7 @@ public class EnemyWave : MonoBehaviour
     */
     private void SpawnRandomFormation()
     {
-        int randNum = Random.Range(0, 4);
+        int randNum = (int)Random.Range(0, 5);
 
         switch (randNum)
         {

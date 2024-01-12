@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("return") || Input.GetKeyDown("enter"))
+        if (Input.GetKeyDown("tab"))
         {
             // Go back to the main menu
             SceneManager.LoadScene("MainMenu");
@@ -27,7 +27,7 @@ public class GameOver : MonoBehaviour
         GUI.Label(new Rect(0, Screen.height / 4f - 80f, Screen.width, 70), "Game over!");
 
         GUI.skin.label.fontSize = 40;
-        GUI.Label(new Rect(0, Screen.height / 4f + 340f, Screen.width, 70), "Press 'return' to continue...");
+        GUI.Label(new Rect(0, Screen.height / 4f + 340f, Screen.width, 70), "Press 'tab' to continue...");
 
         GUI.skin.label.fontSize = 35;
         GUI.Label(new Rect(0, Screen.height / 4f + 40f, Screen.width, 70), "Stats:");

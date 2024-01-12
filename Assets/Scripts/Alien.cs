@@ -44,6 +44,10 @@ public class Alien : MonoBehaviour
             // so try to get a reference to that component
             Projectile projectile = other.GetComponent<Projectile>();
 
+            if (transform.parent.childCount == 1)
+            {
+                GameMaster.WaveFinished();
+            }
             //If that reference is not null, then check if it's an enemyProjectile      
             if (projectile != null && !projectile.enemyProjectile)
             {
