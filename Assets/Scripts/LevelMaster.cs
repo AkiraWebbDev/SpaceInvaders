@@ -95,5 +95,9 @@ public class LevelMaster : MonoBehaviour
         GUI.Label(new Rect(Screen.width - 320, 80, 300, 100), "Speed:\t" + GameMaster.playerSpeed);
         GUI.Label(new Rect(Screen.width - 320, 110, 300, 100), "Fire Rate:\t" + ((1 / GameMaster.shotCooldown) * 60));
 
+        GUI.skin.label.alignment = TextAnchor.UpperLeft;
+        GUI.color = Color.green;
+        GUI.Label(new Rect(250, 50, 500, 100), "Last Upgrade: " + GameMaster.lastUpgrade);
+
     }
 }

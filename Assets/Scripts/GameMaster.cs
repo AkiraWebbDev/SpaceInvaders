@@ -19,10 +19,11 @@ public class GameMaster : MonoBehaviour
     public static int playerHealth = 3;
 
     public static int currentPlayerLevel = 1;
-    public static float scoreToLevel = 500;
+    public static float scoreToLevel = 300;
     public static float currentXP = 0;
 
     public static string lastUpgrade;
+
 
     // Method to call when enemy is hit
     public static void EnemyHit(Alien alien)
@@ -32,6 +33,7 @@ public class GameMaster : MonoBehaviour
         currentXP += alien.points;
         enemiesDestroyed += 1;
         CheckXp();
+
     }
 
     public static void DartHit(Dart dart)
@@ -40,23 +42,29 @@ public class GameMaster : MonoBehaviour
         currentXP += dart.points;
         enemiesDestroyed += 1;
         CheckXp();
+
     }
 
     public static void CheckXp()
     {
-        ProgressBar xpBar;
-        xpBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
+
+        ProgressBar xpBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
 
         if (currentXP >= scoreToLevel)
         {
-            scoreToLevel = scoreToLevel * 1.4f;
+            scoreToLevel *= 1.4f;
             currentXP = 0;
             currentPlayerLevel += 1;
             RandomUpgrade();
         }
 
         float percentXP = currentXP / scoreToLevel;
-        xpBar.IncrementProgress(percentXP);
+        if (percentXP > 1)
+        {
+            percentXP = 1;
+        }
+        print(percentXP);
+        xpBar.SetProgress(percentXP);
     }
 
 
@@ -70,15 +78,16 @@ public class GameMaster : MonoBehaviour
         {
             case 1:
             case 2:
+            case 4:
                 shotCooldown -= (shotCooldown * 0.10f);
                 lastUpgrade = "+10% fire rate";
                 break;
+
             case 3:
                 shotCooldown -= (shotCooldown * 0.20f);
                 lastUpgrade = "+20% fire rate";
                 break;
 
-            case 4:
             case 5:
             case 6:
                 playerSpeed += 2;
@@ -87,7 +96,7 @@ public class GameMaster : MonoBehaviour
 
             case 7:
                 playerSpeed += 3;
-                shotCooldown -= (shotCooldown - 0.30f);
+                shotCooldown -= (shotCooldown * 0.30f);
                 lastUpgrade = "+3 speed & +30% fire rate";
                 break;
 
@@ -96,6 +105,7 @@ public class GameMaster : MonoBehaviour
                 lastUpgrade = "+1 health";
                 break;
         }
+        print(lastUpgrade);
     }
     // Method to call when player is hit
     public static void PlayerHit()

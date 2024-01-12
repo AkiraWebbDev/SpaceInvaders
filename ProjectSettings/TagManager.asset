@@ -10,6 +10,7 @@ TagManager:
   - LeftWall
   - RightWall
   - AudioManager
+  - ProgressBar
   layers:
   - Default
   - TransparentFX

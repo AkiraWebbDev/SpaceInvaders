@@ -35,7 +35,7 @@ public class SpawnController : MonoBehaviour
             {
                 GameObject newEnemy = Instantiate(alienDartPrefab, new Vector3(8f, Random.Range(-4.5f, 4.5f), -2f), Quaternion.identity);
                 budget--;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
             else
             {
@@ -52,9 +52,19 @@ public class SpawnController : MonoBehaviour
     {
         while (stopSpawning == false)
         {
-            yield return new WaitForSeconds(20f);
-            GameObject newEnemy = Instantiate(alienWavePrefab, new Vector3(8f, 0, -2f), Quaternion.identity);
-            newEnemy.transform.parent = transform.parent;
+            if (Time.realtimeSinceStartup > 120)
+            {
+                yield return new WaitForSeconds(10f);
+                GameObject newEnemy = Instantiate(alienWavePrefab, new Vector3(8f, 0, -2f), Quaternion.identity);
+                newEnemy.transform.parent = transform.parent;
+            }
+            else
+            {
+                yield return new WaitForSeconds(25f);
+                GameObject newEnemy = Instantiate(alienWavePrefab, new Vector3(8f, 0, -2f), Quaternion.identity);
+                newEnemy.transform.parent = transform.parent;
+            }
+            
         }
 
     }
