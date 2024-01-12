@@ -20,28 +20,40 @@ public class GameOver : MonoBehaviour
     {
 
         // Show player score in white on the top left of the screen
-        GUI.color = Color.white;
+        GUI.color = Color.cyan;
         GUI.skin.label.alignment = TextAnchor.MiddleCenter;
         GUI.skin.label.fontSize = 50;
         GUI.skin.label.fontStyle = FontStyle.Bold;
         GUI.Label(new Rect(0, Screen.height / 4f - 80f, Screen.width, 70), "Game over!");
 
         GUI.skin.label.fontSize = 40;
-        GUI.Label(new Rect(0, Screen.height / 4f + 300f, Screen.width, 70), "Press 'return' to continue...");
+        GUI.Label(new Rect(0, Screen.height / 4f + 340f, Screen.width, 70), "Press 'return' to continue...");
 
         GUI.skin.label.fontSize = 35;
         GUI.Label(new Rect(0, Screen.height / 4f + 40f, Screen.width, 70), "Stats:");
 
-        GUI.skin.label.fontSize = 30;
-        GUI.skin.label.alignment = TextAnchor.MiddleLeft;
 
         string scoreMessage = "Score: " + GameMaster.playerScore;
-        string killsMessage = "Kills: " + GameMaster.enemiesDestroyed;
+        string killsMessage = "Destroyed drones: " + GameMaster.enemiesDestroyed;
         string distanceMessage = "Distance: " + GameMaster.distanceTravelled + "km";
+        string levelMessage = "Level Reached: " + GameMaster.currentPlayerLevel;
+        string speedReached = "Speed: " + GameMaster.playerSpeed;
+        string rateOfFire = "Fire rate: " + ((1 / GameMaster.shotCooldown) * 60) + "/min";
 
-        GUI.Label(new Rect(250f, Screen.height / 4f + 80f, Screen.width, 70), scoreMessage);
-        GUI.Label(new Rect(250f, Screen.height / 4f + 120f, Screen.width, 70), killsMessage);
-        GUI.Label(new Rect(250f, Screen.height / 4f + 160f, Screen.width, 70), distanceMessage);
+
+        GUI.color = Color.white;
+        GUI.skin.label.fontSize = 20;
+        GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+
+        GUI.Label(new Rect(0, Screen.height / 4f + 80f, Screen.width, 70), scoreMessage);
+        GUI.Label(new Rect(0, Screen.height / 4f + 110f, Screen.width, 70), killsMessage);
+        GUI.Label(new Rect(0, Screen.height / 4f + 140f, Screen.width, 70), distanceMessage);
+        GUI.Label(new Rect(0, Screen.height / 4f + 170f, Screen.width, 70), levelMessage);
+        GUI.Label(new Rect(0, Screen.height / 4f + 200f, Screen.width, 70), speedReached);
+        GUI.Label(new Rect(0, Screen.height / 4f + 230f, Screen.width, 70), rateOfFire);
+
+
+
 
 
 
