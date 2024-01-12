@@ -97,7 +97,7 @@ public class LevelMaster : MonoBehaviour
 
         GUI.skin.label.alignment = TextAnchor.UpperLeft;
         GUI.color = Color.green;
-        GUI.Label(new Rect(250, 50, 500, 100), "Last Upgrade: " + GameMaster.lastUpgrade);
+        GUI.Label(new Rect(250, 90, 500, 100), "Last Upgrade: " + GameMaster.lastUpgrade);
 
     }
 }
