@@ -23,17 +23,19 @@ public class AudioManager : MonoBehaviour
 
     public void PlayExplosion()
     {
+        audioSource.pitch = 1;
         audioSource.PlayOneShot(explosionSound);
     }
 
     public void PlayPlayerRecharge()
     {
+        audioSource.pitch = 3;
         audioSource.PlayOneShot(playerRecharge);
-
     }
 
     public void PlayLevelUp()
     {
+        audioSource.pitch = 1;
         audioSource.PlayOneShot(playerLevelUp);
     }
 }

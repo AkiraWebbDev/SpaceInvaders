@@ -32,6 +32,9 @@ public class Player : MonoBehaviour {
 
     bool playerInvulnerable = false;
 
+    Attack attack;
+
+
     // On collision with a trigger collider...
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -119,7 +122,7 @@ public class Player : MonoBehaviour {
 
     AudioManager audioManager;
 
-    void Start()
+    void Awake()
     {
         spriteAnim = GameObject.Find("PlayerSprite").GetComponent<Animator>();
         if (spriteAnim == null)
@@ -133,6 +136,13 @@ public class Player : MonoBehaviour {
             print("Error, no audio manager found");
 
         }
+
+        attack = GetComponent<Attack>();
+        if (attack == null)
+        {
+            print("Error, no attack reference found");
+
+        }
     }
 
 
@@ -143,6 +153,9 @@ public class Player : MonoBehaviour {
 		float vertMovementInput = Input.GetAxis("Vertical");
         float horiMovementInput = Input.GetAxis("Horizontal");
 
+        // Can be cleaner...
+        speed = GameMaster.playerSpeed;
+        attack.fireCooldownTime = GameMaster.shotCooldown;
 
         // If close to wall and moving towards it,
         // stop the movement
@@ -175,8 +188,8 @@ public class Player : MonoBehaviour {
         {
             // Get player's attack component
             // and execute it's shoot() method
-            Attack attack = GetComponent<Attack>();
             attack.Shoot();
+            
         }
 	}
 
@@ -199,7 +212,7 @@ public class Player : MonoBehaviour {
     IEnumerator PlayerInvulnTimer()
     {
         playerInvulnerable = true;
-        yield return (new WaitForSeconds(1));
+        yield return (new WaitForSeconds(4.3f));
         playerInvulnerable = false;
     }
 }

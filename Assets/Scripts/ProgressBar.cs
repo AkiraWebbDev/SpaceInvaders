@@ -20,7 +20,7 @@ public class ProgressBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        IncrementProgress(0.80f);
+        //IncrementProgress(0.80f);
     }
 
     // Update is called once per frame
@@ -33,6 +33,10 @@ public class ProgressBar : MonoBehaviour
             {
                 particleSys.Play();
             }
+        }
+        else if (slider.value >= 1f)
+        {
+            slider.value = 0;
         }
         else
         {

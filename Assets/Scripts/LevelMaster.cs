@@ -76,15 +76,24 @@ public class LevelMaster : MonoBehaviour
         // Show player score in white on the top left of the screen
         GUI.color = Color.white;
         GUI.skin.label.alignment = TextAnchor.UpperLeft;
-        GUI.skin.label.fontSize = 40;
+        GUI.skin.label.fontSize = 30;
         GUI.skin.label.fontStyle = FontStyle.Bold;
         GUI.Label(new Rect(20, 20, 500, 100), "Score: " + GameMaster.playerScore);
 
         // Show the player lives in red on the top right of the screen
         GUI.color = Color.red;
         GUI.skin.label.alignment = TextAnchor.UpperRight;
-        GUI.skin.label.fontSize = 40;
+        GUI.skin.label.fontSize = 30;
         GUI.skin.label.fontStyle = FontStyle.Bold;
         GUI.Label(new Rect(Screen.width - 320, 20, 300, 100), "Lives: " + GameMaster.playerHealth);
+
+        GUI.color = Color.cyan;
+        GUI.skin.label.alignment = TextAnchor.UpperRight;
+        GUI.skin.label.fontSize = 20;
+        GUI.skin.label.fontStyle = FontStyle.Bold;
+        GUI.Label(new Rect(Screen.width - 320, 50, 300, 100), "Level:\t" + GameMaster.currentPlayerLevel);
+        GUI.Label(new Rect(Screen.width - 320, 80, 300, 100), "Speed:\t" + GameMaster.playerSpeed);
+        GUI.Label(new Rect(Screen.width - 320, 110, 300, 100), "Fire Rate:\t" + ((1 / GameMaster.shotCooldown) * 60));
+
     }
 }
