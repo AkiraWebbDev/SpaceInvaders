@@ -11,6 +11,7 @@ public class GameOver : MonoBehaviour
         if (Input.GetKeyDown("tab"))
         {
             // Go back to the main menu
+            GameMaster.ResetGameStats();
             SceneManager.LoadScene("MainMenu");
         }
     }

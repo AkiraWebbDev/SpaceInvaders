@@ -131,4 +131,20 @@ public class GameMaster : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("GameOver");
     }
+
+    public static void ResetGameStats()
+    {
+    // Player score and stats
+    playerScore = 0;
+    enemiesDestroyed = 0;
+    distanceTravelled = 0;
+    playerSpeed = 4;
+    shotCooldown = 0.8f;
+    // Player health - always start with 3 lives
+    playerHealth = 3;
+    currentPlayerLevel = 1;
+    scoreToLevel = 300;
+    currentXP = 0;
+    lastUpgrade = null;
+    }
 }
